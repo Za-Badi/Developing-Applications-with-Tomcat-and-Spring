@@ -1,0 +1,27 @@
+:root{
+    main_color: #842029;
+}
+th{
+    background-color: #842029 !important;
+    color: white;
+
+}
+
+
+.btnStyle{
+    background-color: #842029 !important;
+    /*padding: 10px;*/
+    color: white;
+}
+
+.continue{
+    display: flex;
+    flex-direction: row;
+
+}
+h1{
+    color: black;
+    /*background-color: blue;*/
+}
+
+

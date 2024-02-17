@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--    <meta charset="UTF-8">-->
+    <title>Cars</title>
+    <link rel="stylesheet" th:href="@{resources/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{resources/css/index.css}">
+</head>
+<body>
+
+<h1 class="cont text-center text-black text-capitalize pt-5 pb-2 fs-1" style="font-size: large">Cars</h1>
+
+<div class="container w-75 d-flex justify-content-center ">
+    <form action="car">
+        <span class="">Filter: </span> <input type="number"  th:name="count"  ></input>
+        <input class="mx-4 btn btn-light btnStyle" type="submit"></input>
+    </form>
+    <form >
+        <button class="mx-2 p-2 btn-light btn btnStyle" type="submit" value="all" onclick="" >Clear</button>
+    </form>
+</div>
+<table class="w-75  table-striped shadow table  text-center bg-light m-auto  text-center mt-5">
+    <thead id="thead" >
+    <tr>
+        <th class="text-capitalize">manufacture</th>
+        <th class="text-capitalize">model</th>
+        <th class="text-capitalize">series</th>
+    </tr></thead>
+<!--    <tbody id="carContent"></tbody>-->
+    <tr th:each="carList : ${carList}">
+           <td th:text="${carList.manufacture}"></td>
+
+           <td th:text="${carList.model}"></td>
+           <td th:text="${carList.series}"></td>
+       </div>
+    </tr>
+</table>
+
+
+
+<script  th:src="@{resources/css/bootstrap.min.css}"></script>
+
+</body>
+</html>
