@@ -1,25 +1,50 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
 <html lang="en">
-<link rel="stylesheet" th:href="@{resources/css/bootstrap.min.css}">
-<link th:href = "@{resources/css/index.css}" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Users</title>
+    <link rel="stylesheet" th:href="@{resources/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{resources/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{resources/css/index.css}">
 </head>
 <body>
+<h1 class="cont text-center text-black text-capitalize pt-5 pb-2 fs-1" style="font-size: large">Users</h1>
 
-    <div>
-        <th:block th:each="msg : ${messages}">
-            <h1  th:text="${msg}"></h1>
-        </th:block>
-    </div>
+<!--<div class="container w-75 d-flex justify-content-center ">-->
+<!--  <form action="/">-->
+<!--    <span class="">Filter: </span> <input type="number"  th:name="count"  ></input>-->
+<!--    <input class="mx-4 btn btn-light btnStyle fs-3" type="submit"></input>-->
+<!--  </form>-->
 
-    <div class="d-flex w-75 justify-content-center m-auto">
-        <form action="car">
-          <button class=" mt-4 text-center btn btn-dark" type="submit"> View Cars </button>
-        </form>
-    </div>
-    <script  th:src="@{resources/css/bootstrap.min.css}"></script>
+<!--</div>-->
+<div class="d-flex justify-content-center ">
+    <a th:href="add" class="textMainColor ">Add new user</a>
+</div>
+<!--<form action="add" >-->
+<!--  <button class="text-center mx-2 p-2 text-decoration-underline textMainColor" type="submit"  >Add new user</button>-->
+<!--</form>-->
+<div class="m-auto px-5 ">
+    <table class=" table-striped shadow table  text-center bg-light m-auto  text-center mt-5">
+        <thead id="thead" class="mainColor">
+        <tr>
+            <th class="text-capitalize">id</th>
+            <th class="text-capitalize">name</th>
+            <th class="text-capitalize">last name</th>
+            <th class="text-capitalize">Email</th>
+            <th class="text-capitalize text-center">Action</th>
+        </tr>
+        </thead>
+        <tr th:each="userList : ${userList}">
+            <td th:text="${userList.id}"></td>
+            <td th:text="${userList.firstName}"></td>
+            <td th:text="${userList.lastName}"></td>
+            <td th:text="${userList.email}"></td>
+            <td>
+                <a  th:href="@{/update(name=${userList.firstName}, lastName = ${userList.lastName},email=${userList.email}, id=${userList.id})}" class="btn btn-light px-3 edit" >Edit</a>
+                <a  th:href= "@{/delete/{id}(id=${userList.id})}" class="btn btn-danger" >Delete</a></td>
+        </tr>
+    </table>
+</div>
+<script  th:src="@{resources/css/bootstrap.min.css}"></script>
 </body>
 </html>

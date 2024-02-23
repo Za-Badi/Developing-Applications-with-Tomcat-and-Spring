@@ -20,7 +20,7 @@ public class UserController {
                                @RequestParam(value = "count", required = false) Integer count) {
         List<User> users = userServiceContext.listUsers();
         model.addAttribute("userList",users);
-        return "user";
+        return "index";
     }
     @RequestMapping(value = "/delete/{id}" , method = RequestMethod.GET)
     public String deleteUser(  @PathVariable long id){
@@ -38,19 +38,14 @@ public class UserController {
 
     @RequestMapping(value = "/update")
     public String update(ModelMap model, @RequestParam(name = "name") String name, @RequestParam(name = "lastName") String lastName, @RequestParam(name = "email") String email , @RequestParam(name = "id") long id) {
-
         User user = new User(name, lastName, email);
         user.setId((long) id);
-//        userServiceContext.update(user);
-//        model.addAttribute("user", user);
         model.addAttribute("user", user);
         return "edit";
     }
 
     @RequestMapping(value = "/edit_user")
     public String editUser(@RequestParam(name = "name") String name, @RequestParam(name = "lastName") String lastName, @RequestParam(name = "email") String email , @RequestParam(name = "id") long id) {
-
-
             User user = new User(name, lastName, email);
             user.setId((long) id);
             userServiceContext.update(user);
@@ -60,8 +55,6 @@ public class UserController {
     }
     @RequestMapping(value = "/cancel")
     public String editUser(){
-
-
         return "redirect:/";
     }
     @GetMapping(value = "/new_user")
