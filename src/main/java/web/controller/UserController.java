@@ -5,6 +5,7 @@ import hiber.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.List;
 
 @Controller
 public class UserController {
+
+
 
     @Autowired
     UserService userServiceContext;
@@ -29,8 +32,8 @@ public class UserController {
         return "redirect:/";
     }
     @RequestMapping(value = "/add" , method = RequestMethod.GET)
-    public String addUser(){
-//        userServiceContext.update( new User( "zzzz", "badi", "badi.zaha@gmail.com"),6);
+    public String addUser(Model model){
+        model.addAttribute("user", new User());
         return "add";
     }
 
@@ -57,9 +60,9 @@ public class UserController {
     public String editUser(){
         return "redirect:/";
     }
-    @GetMapping(value = "/new_user")
-    public String printWelcome(ModelMap model, @RequestParam(name = "name") String name, @RequestParam(name = "lastName") String lastName, @RequestParam(name = "email") String email ) {
-        userServiceContext.add(new User(name, lastName,email));
+    @GetMapping(value = "/save")
+    public String printWelcome(  User user){
+        userServiceContext.add(user);
         return "redirect:/";
     }
 
