@@ -9,14 +9,7 @@
     <link rel="stylesheet" th:href="@{resources/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{resources/css/index.css}">
     <script type="text/javascript">
-        function empty() {
-            var x;
-            x = document.getElementById("name").value;
-            if (x == "") {
-                alert("Enter a Valid Roll Number");
-                return false;
-            };
-        }
+
     </script>
 </head>
 <body>
@@ -51,7 +44,7 @@
         <div class="col">
             <div class=" d-flex justify-content-end">
                 <a th:href="@{/cancel}" class=" mx-3 mt-4 text-center btn  btn-danger">Back</a>
-                <button value="submit" class=" px-3 mt-4 text-center btn  save" type="submit"  onClick="return empty()">Save</button>
+                <button class=" px-3 mt-4 text-center btn  save" type="submit" >Save</button>
 
             </div>
         </div>
