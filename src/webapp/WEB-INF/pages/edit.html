@@ -8,11 +8,22 @@
     <link rel="stylesheet" th:href="@{resources/css/all.min.css}">
     <link rel="stylesheet" th:href="@{resources/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{resources/css/index.css}">
+    <script type="text/javascript">
+        function empty() {
+            var x;
+            x = document.getElementById("name").value;
+            if (x == "") {
+                alert("Enter a Valid Roll Number");
+                return false;
+            };
+        }
+    </script>
 </head>
 <body>
 <h1 class=" add p-5 mt-5">Edit User Form</h1>
 <div class="row container m-auto w-75 justify-content-center">
-    <form action="/edit_user">
+<!--    <form action="/edit_user">-->
+    <form th:action="@{edit_user}" th:object= "${user}" >
         <div class="col pb-2">
             <div class="form-group">
                 <label for="id">User Id<span class="px-5  text-danger">Cannot be changed</span></label>
@@ -22,7 +33,7 @@
         <div class="col pb-2">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" class="form-control" th:value="${user.firstName}" >
+                <input type="text" name="name" id="name" class="form-control" th:value="${user.firstName}" th:required="true"  >
             </div>
         </div>
         <div class="col pb-2">
@@ -34,19 +45,20 @@
         <div class="col">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email" class="form-control" th:value="${user.email}">
+                <input required type="text" name="email" id="email" class="form-control" th:value="${user.email}">
             </div>
         </div>
         <div class="col">
             <div class=" d-flex justify-content-end">
                 <a th:href="@{/cancel}" class=" mx-3 mt-4 text-center btn  btn-danger">Back</a>
-                <button class=" px-3 mt-4 text-center btn  save" type="submit">Save</button>
+                <button value="submit" class=" px-3 mt-4 text-center btn  save" type="submit"  onClick="return empty()">Save</button>
 
             </div>
         </div>
 
     </form>
 </div>
+
 <script  th:src="@{resources/css/bootstrap.min.css}"></script>
 
 </body>

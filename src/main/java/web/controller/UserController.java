@@ -14,8 +14,6 @@ import java.util.List;
 @Controller
 public class UserController {
 
-
-
     @Autowired
     UserService userServiceContext;
     @GetMapping(value = "/" )
@@ -42,14 +40,15 @@ public class UserController {
     @RequestMapping(value = "/update")
     public String update(ModelMap model, @RequestParam(name = "name") String name, @RequestParam(name = "lastName") String lastName, @RequestParam(name = "email") String email , @RequestParam(name = "id") long id) {
         User user = new User(name, lastName, email);
-        user.setId((long) id);
+        user.setId(id);
         model.addAttribute("user", user);
         return "edit";
     }
 
     @RequestMapping(value = "/edit_user")
     public String editUser(@RequestParam(name = "name") String name, @RequestParam(name = "lastName") String lastName, @RequestParam(name = "email") String email , @RequestParam(name = "id") long id) {
-            User user = new User(name, lastName, email);
+        System.out.println("kkkkkk "+name);
+        User user = new User(name, lastName, email);
             user.setId((long) id);
             userServiceContext.update(user);
 
@@ -60,12 +59,18 @@ public class UserController {
     public String editUser(){
         return "redirect:/";
     }
+    @GetMapping(value = "/new_user")
+    public String printWelcome(ModelMap model, @RequestParam(name = "name") String name, @RequestParam(name = "lastName") String lastName, @RequestParam(name = "email") String email ) {
+        System.out.println("zaga jj "+name+lastName+email);
+        userServiceContext.add(new User(name, lastName,email));
+        return "redirect:/";
+    }
+
     @GetMapping(value = "/save")
     public String printWelcome(  User user){
         userServiceContext.add(user);
         return "redirect:/";
     }
-
 
 
 
