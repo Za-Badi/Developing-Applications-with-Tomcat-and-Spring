@@ -47,7 +47,6 @@ public class UserController {
 
     @RequestMapping(value = "/edit_user")
     public String editUser(@RequestParam(name = "name") String name, @RequestParam(name = "lastName") String lastName, @RequestParam(name = "email") String email , @RequestParam(name = "id") long id) {
-        System.out.println("kkkkkk "+name);
         User user = new User(name, lastName, email);
             user.setId((long) id);
             userServiceContext.update(user);
@@ -61,7 +60,6 @@ public class UserController {
     }
     @GetMapping(value = "/new_user")
     public String printWelcome(ModelMap model, @RequestParam(name = "name") String name, @RequestParam(name = "lastName") String lastName, @RequestParam(name = "email") String email ) {
-        System.out.println("zaga jj "+name+lastName+email);
         userServiceContext.add(new User(name, lastName,email));
         return "redirect:/";
     }
