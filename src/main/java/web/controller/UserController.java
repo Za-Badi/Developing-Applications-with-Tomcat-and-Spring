@@ -1,9 +1,7 @@
 package web.controller;
-import hiber.config.AppConfig;
 import model.User;
 import hiber.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -48,8 +46,8 @@ public class UserController {
     @RequestMapping(value = "/edit_user")
     public String editUser(@RequestParam(name = "name") String name, @RequestParam(name = "lastName") String lastName, @RequestParam(name = "email") String email , @RequestParam(name = "id") long id) {
         User user = new User(name, lastName, email);
-            user.setId((long) id);
-            userServiceContext.update(user);
+        user.setId((long) id);
+        userServiceContext.update(user);
 
 
         return "redirect:/";

@@ -61,6 +61,7 @@
             <version>8.0.25</version>
         </dependency>
 
+
     </dependencies>
 
     <build>
@@ -88,6 +89,7 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+
         </plugins>
         <finalName>Spring_MVC</finalName>
     </build>
